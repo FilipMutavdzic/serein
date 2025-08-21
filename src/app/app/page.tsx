@@ -23,6 +23,7 @@ function RoomCard({ slug, title }: { slug: string; title: string }) {
       <div className="h-24 rounded-xl bg-gradient-to-br from-white to-sky-50 mb-3" />
       <div className="font-medium">{title}</div>
       <div className="text-sm text-slate-500">2–3 minutes • ambient</div>
+      <a className="underline" href="/app/rooms"> all categories</a>
     </a>
   );
 }
