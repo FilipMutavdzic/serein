@@ -1,16 +1,25 @@
 import Link from "next/link";
 
-export default function Landing() {
+const rooms = [
+  { slug: "rain-wipe", title: "Rain Wipe" },
+  { slug: "glow-circle", title: "Glow Circle" },
+  { slug: "ocean-wave", title: "Ocean Wave" }
+];
+
+export default function RoomsPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24 text-center space-y-6">
-      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">
-        Calm that fits in <span className="underline decoration-sky-300">2 minutes</span>.
-      </h1>
-      <p className="text-lg text-slate-600">Build tiny rituals. Watch your Calm Score drift. One simple plan.</p>
-      <div className="flex gap-3 justify-center">
-        <Link className="px-6 py-3 rounded-xl bg-black text-white" href="/app">Try free for 7 days</Link>
-        <Link className="px-6 py-3 rounded-xl bg-white border" href="/pricing">Pricing</Link>
-      </div>
+    <main className="space-y-6">
+      <h1 className="text-2xl font-semibold">All Rooms</h1>
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {rooms.map((r) => (
+          <li key={r.slug}>
+            <Link className="block px-4 py-3 rounded-xl border hover:bg-slate-100"
+                  href={`/session/${r.slug}`}>
+              {r.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

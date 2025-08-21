@@ -1,34 +1,40 @@
 import Link from "next/link";
+import RoomTile from "@components/RoomTile";
 
-export default function AppHome() {
+export default function HomePage() {
   return (
-    <main className="max-w-5xl mx-auto p-6 space-y-6">
-      <h2 className="text-2xl font-semibold">Today’s micro escape</h2>
+    <main className="space-y-6">
+      <h1 className="text-3xl font-semibold">Welcome to Serein</h1>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        <RoomCard slug="rain-wipe"   title="Rain Wipe" />
-        <RoomCard slug="glow-circle" title="Glow Circle" />
-        <RoomCard slug="ocean-wave"  title="Ocean Wave Sync" />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <RoomTile
+          title="Rain Wipe"
+          description="A quick reset with gentle rainfall."
+          href="/session/rain-wipe"
+        />
+        <RoomTile
+          title="Glow Circle"
+          description="Calming focus with soft pulses."
+          href="/session/glow-circle"
+        />
+        <RoomTile
+          title="Ocean Wave"
+          description="Breathe with the tide."
+          href="/session/ocean-wave"
+        />
       </div>
 
       <div className="flex gap-3">
-        <Link className="px-4 py-2 rounded-xl bg-black text-white" href="/history">History</Link>
-        <Link className="px-4 py-2 rounded-xl bg-white border" href="/rooms">Calm Circles</Link>
+        <Link className="px-4 py-2 rounded-xl bg-black text-white" href="/history">
+          History
+        </Link>
+        <Link className="px-4 py-2 rounded-xl border" href="/rooms">
+          Browse all
+        </Link>
+        <Link className="px-4 py-2 rounded-xl border" href="/panic">
+          Panic helper
+        </Link>
       </div>
     </main>
-  );
-}
-
-function RoomCard({ slug, title }: { slug: string; title: string }) {
-  // IMPORTANT: Link is the clickable wrapper; NO nested <a> inside.
-  return (
-    <Link
-      href={`/session/${slug}`}  // route: src/app/session/[roomId]
-      className="block rounded-2xl bg-white/70 p-5 shadow-sm hover:shadow transition"
-    >
-      <div className="h-24 rounded-xl bg-gradient-to-br from-white to-sky-50 mb-3" />
-      <div className="font-medium">{title}</div>
-      <div className="text-sm text-slate-500">2–3 minutes • ambient</div>
-    </Link>
   );
 }
