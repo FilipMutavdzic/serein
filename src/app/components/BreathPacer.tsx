@@ -1,37 +1,42 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function BreathPacer({ pattern="4-7-8", seconds=90, onDone }:{
-  pattern?: "box" | "4-7-8" | "coherent" | string; seconds?: number; onDone?: ()=>void;
-}) {
-  const [phase, setPhase] = useState<"in"|"hold"|"out">("in");
-  const [remaining, setRemaining] = useState(seconds);
+/** Very simple breathing pacer: In 4s / Hold 4s / Out 6s */
+export default function BreathPacer({
+  cycleMs = 14000,
+}: { cycleMs?: number }) {
+  const phases = [
+    { label: "Breathe In", ms: 4000 },
+    { label: "Hold", ms: 4000 },
+    { label: "Breathe Out", ms: 6000 },
+  ];
 
-  useEffect(()=>{ const t=setInterval(()=>setRemaining(r=>r-1),1000); return ()=>clearInterval(t); },[]);
-  useEffect(()=>{ if (remaining<=0) onDone?.(); },[remaining]);
+  const [i, setI] = useState(0);
 
-  useEffect(()=>{
-    let inMs=4000, holdMs=7000, outMs=8000;
-    if (pattern==="box"){ inMs=4000; holdMs=4000; outMs=4000; }
-    if (pattern==="coherent"){ inMs=5500; holdMs=0; outMs=5500; }
-    let active=true;
-    (function loop(){
-      if(!active) return;
-      setPhase("in"); setTimeout(()=>{
-        if(!active) return;
-        if (holdMs>0){ setPhase("hold"); setTimeout(()=>{
-          if(!active) return; setPhase("out"); setTimeout(loop,outMs);
-        },holdMs);} else { setPhase("out"); setTimeout(loop,outMs); }
-      },inMs);
-    })();
-    return ()=>{ active=false; };
-  },[pattern]);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setI(prev => (prev + 1) % phases.length);
+    }, phases[i].ms);
+    return () => clearInterval(t);
+  }, [i]);
 
   return (
-    <div className="grid place-items-center">
-      <div className={`w-48 h-48 rounded-full border-4 transition-all duration-500 ${phase==="in"?"scale-110":phase==="hold"?"scale-100":"scale-90"}`} />
-      <div className="mt-4 text-slate-600">{phase==="in"?"Breathe in":phase==="hold"?"Hold":"Breathe out"}</div>
-      <div className="text-xs text-slate-400">Ends in {remaining}s</div>
+    <div className="grid place-items-center gap-4">
+      <div className="text-lg font-medium">{phases[i].label}</div>
+      <div
+        className="w-32 h-32 rounded-full bg-sky-200 transition-all"
+        style={{
+          transform:
+            phases[i].label === "Breathe In"
+              ? "scale(1.2)"
+              : phases[i].label === "Breathe Out"
+              ? "scale(0.8)"
+              : "scale(1)",
+        }}
+      />
+      <p className="text-xs text-slate-500">
+        Simple demo pacer — replace with your final animation later.
+      </p>
     </div>
   );
 }
