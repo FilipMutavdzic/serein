@@ -16,10 +16,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./src",
+    {
+  "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "*"
+      "@/*": ["src/*"]
+    }
+  }
+}
+
+
+
       ],
       "@components/*": [
         "components/*"
