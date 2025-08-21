@@ -19,10 +19,7 @@ const data: Record<string, {name:string; premium?:boolean; rooms:{slug:string; t
   "focus": { name:"Focus Boost", premium:true, rooms:[ { slug:"tap-warmup", title:"Tap Cadence Warmup", premium:true } ]},
 };
 
-function isPaid() {
-  // placeholder: we’ll connect Stripe later
-  return false;
-}
+function isPaid() { return false; } // placeholder until Stripe
 
 export default function Category({ params }: { params: { category: string } }) {
   const cat = data[params.category];
@@ -43,13 +40,13 @@ export default function Category({ params }: { params: { category: string } }) {
         {cat.rooms.map(r => (
           <div key={r.slug} className="rounded-2xl bg-white/70 p-5 shadow-sm border">
             <div className="font-medium">{r.title}</div>
-            { (locked || (r.premium && !isPaid())) ? (
+            {(locked || (r.premium && !isPaid())) ? (
               <div className="mt-2 text-sm">
                 <span className="inline-block text-xs bg-black text-white px-2 py-1 rounded mr-2">Locked</span>
-                <a href="/pricing" className="underline">See pricing</a>
+                <Link href="/pricing" className="underline">See pricing</Link>
               </div>
             ) : (
-              <Link className="mt-2 inline-block underline" href={`/app/session/${r.slug}`}>Open</Link>
+              <Link className="mt-2 inline-block underline" href={`/session/${r.slug}`}>Open</Link>
             )}
           </div>
         ))}
