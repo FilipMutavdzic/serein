@@ -1,16 +1,40 @@
 import Link from "next/link";
+import RoomTile from "components/RoomTile";
 
-export default function Landing() {
+export default function HomePage() {
+  const rooms = [
+    { slug: "rain-wipe", title: "Rain Wipe", color: "from-sky-500 to-blue-700" },
+    { slug: "slow-circle", title: "Slow Circle", color: "from-indigo-500 to-violet-700" },
+    { slug: "ocean-wave", title: "Ocean Wave", color: "from-cyan-500 to-teal-700" },
+  ];
+
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24 text-center space-y-6">
-      <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">
-        Calm that fits in <span className="underline decoration-sky-300">2 minutes</span>.
-      </h1>
-      <p className="text-lg text-slate-600">Build tiny rituals. Watch your Calm Score drift. One simple plan.</p>
-      <div className="flex gap-3 justify-center">
-        <Link className="px-6 py-3 rounded-xl bg-black text-white" href="/app">Try free for 7 days</Link>
-        <Link className="px-6 py-3 rounded-xl bg-white border" href="/pricing">Pricing</Link>
+    <main className="mx-auto max-w-5xl px-4 py-8">
+      <header className="mb-6">
+        <h1 className="text-2xl font-semibold text-white">Welcome to Serein</h1>
+        <p className="text-white/70">Pick a micro-escape to begin.</p>
+      </header>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {rooms.map((r) => (
+          <RoomTile
+            key={r.slug}
+            href={`/session/${r.slug}`}
+            title={r.title}
+            gradient={r.color}
+          />
+        ))}
+      </div>
+
+      <div className="mt-10 flex gap-4">
+        <Link href="/history" className="text-white/80 hover:text-white underline">
+          History
+        </Link>
+        <Link href="/panic" className="text-white/80 hover:text-white underline">
+          Panic
+        </Link>
       </div>
     </main>
   );
 }
+

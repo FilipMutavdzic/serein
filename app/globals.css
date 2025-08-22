@@ -1,0 +1,11 @@
+:root{
+  --bg:#FAFAFB; --card:#FFF; --text:#0F172A; --muted:#64748B;
+  --brand:#6AA6FF; --brand-2:#95D5B2; --accent:#FFD6A5;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+}
+@tailwind base; @tailwind components; @tailwind utilities;
+html,body{background:var(--bg); color:var(--text);}
+:focus-visible{outline:2px solid var(--brand); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important;}
+}

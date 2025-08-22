@@ -1,0 +1,13 @@
+// content/advice.json
+[
+  { "id":"panic", "title":"Panic Spike", "body":"Place a hand on your belly. Inhale 4, exhale 6. Name 3 things you see. You’re safe in this moment." },
+  { "id":"email", "title":"Work Email Flood", "body":"Turn off notifications for 2 minutes. Box breathe (4-4-4-4). Pick one email. Do only that." },
+  { "id":"conflict", "title":"Social Conflict", "body":"Say aloud: “Their feelings aren’t facts about me.” Inhale kindness, exhale tension." },
+  { "id":"sleep", "title":"Late-Night Worry", "body":"Write a 2-line ‘worry dump’. Close eyes. 4-7-8 for 4 rounds." },
+  { "id":"exam", "title":"Exam Jitters", "body":"Ground: 5 sights, 4 touches, 3 sounds, 2 breaths, 1 smile. You’ve prepared enough." },
+  { "id":"commute", "title":"Commute Anger", "body":"Drop your shoulders. Unclench jaw. Slow exhale for 10 seconds." },
+  { "id":"tough-talk", "title":"Tough Talk", "body":"Script one sentence you’ll say. Breathe out longer than in. Aim for clear, kind, brief." },
+  { "id":"rumination", "title":"Looping Thoughts", "body":"Label: “thinking”. Return to breath. Repeat gently." },
+  { "id":"burnout", "title":"Edge of Burnout", "body":"Micro-recover: stand, stretch, sip water, 60s pacer. Add one boundary today." },
+  { "id":"sleep-wind", "title":"Sleep Wind-Down", "body":"Dim one light. Turn phone face-down. 2 minutes of slow breath." }
+]

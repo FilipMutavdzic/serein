@@ -1,0 +1,29 @@
+// content/sanctuary-packs.json
+{
+  "packs": [
+    {
+      "name":"Coastal Dawn",
+      "categories":["ocean","sunrise"],
+      "images":["/media/photo-ocean-1.jpg","/media/photo-sunrise-1.jpg"],
+      "videos":["/media/video-waves-1.mp4","/media/video-sunrise-1.mp4"],
+      "sounds":["/media/sound-ocean-1.mp3","/media/sound-soft-1.mp3"],
+      "mantras":["Ride the breath in waves.","Every exhale softens the shore.","The horizon widens inside you."]
+    },
+    {
+      "name":"Forest Drizzle",
+      "categories":["forest","city-rain"],
+      "images":["/media/photo-forest-1.jpg","/media/photo-city-1.jpg"],
+      "videos":["/media/video-forest-1.mp4","/media/video-rain-1.mp4"],
+      "sounds":["/media/sound-forest-1.mp3","/media/sound-rain-1.mp3"],
+      "mantras":["Roots below, soft rain above.","You are allowed to pause.","Quiet gathers as you breathe."]
+    },
+    {
+      "name":"Meadow Ease",
+      "categories":["nature"],
+      "images":["/media/photo-nature-1.jpg","/media/photo-nature-2.jpg"],
+      "videos":["/media/video-leaves-1.mp4"],
+      "sounds":["/media/sound-nature-1.mp3"],
+      "mantras":["Inhale light, exhale weight.","Gentle is enough today.","Set the burden down for a moment."]
+    }
+  ]
+}
